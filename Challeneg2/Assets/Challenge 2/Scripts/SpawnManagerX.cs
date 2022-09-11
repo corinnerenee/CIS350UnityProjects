@@ -47,6 +47,7 @@ public class SpawnManagerX : MonoBehaviour
         //generate random index
         int prefabIndex = Random.Range(0, ballPrefabs.Length);
 
+        // random interval between 3-5seconds, float used so values such as 3.1,3.2,etc can be used
         float spawnInterval = Random.Range(3.0f, 5.0f);
 
         //spawn random colored ball
@@ -57,8 +58,6 @@ public class SpawnManagerX : MonoBehaviour
 
         //spawn ball
         Instantiate(ballPrefabs[prefabIndex], spawnPos, ballPrefabs[prefabIndex].transform.rotation);
-        Invoke("SpawnRandomPrefab", spawnInterval);
-
-
+        //Invoke("SpawnRandomPrefab", spawnInterval);
     }
 }
