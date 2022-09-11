@@ -11,8 +11,6 @@ public class SpawnManagerX : MonoBehaviour
     private float spawnPosY = 30;
 
     private float startDelay = 3.0f;
-    private float spawnInterval = 4.5f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +37,7 @@ public class SpawnManagerX : MonoBehaviour
         while (true)
         {
             SpawnRandomPrefab();
-            float rDelay = Random.Range(3.0f, 5.0f);
+            float rDelay = Random.Range(0.0f, 3.0f);
             yield return new WaitForSeconds(rDelay);
         }
     }
@@ -49,14 +47,17 @@ public class SpawnManagerX : MonoBehaviour
         //generate random index
         int prefabIndex = Random.Range(0, ballPrefabs.Length);
 
+        float spawnInterval = Random.Range(3.0f, 5.0f);
+
         //spawn random colored ball
         Instantiate(ballPrefabs[prefabIndex], new Vector3(0, 0, 0), ballPrefabs[prefabIndex].transform.rotation);
 
         //random spawn position
-        Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), 0, spawnPosY);
+        Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
 
         //spawn ball
         Instantiate(ballPrefabs[prefabIndex], spawnPos, ballPrefabs[prefabIndex].transform.rotation);
+        Invoke("SpawnRandomPrefab", spawnInterval);
 
 
     }
