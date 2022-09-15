@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
     //drag prefabs to spawn into array using inspector
     public GameObject[] prefabsToSpawn;
+    public HealthSystem hSystem;
 
     //variables for spawn positon
     private float leftBound = -14;
@@ -16,6 +18,8 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         //InvokeRepeating("SpawnRandomPrefab", 2, 1.5f); //2 second delay, repeats every 1.5 sec
+        //get reference to hsystem script
+        hSystem = GameObject.FindGameObjectWithTag("HealthSystem").GetComponent<HealthSystem>();
         StartCoroutine(SpawnRandomPrefabWithCoroutine());
     }
     // Update is called once per frame
@@ -31,7 +35,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f); //3 Sec delay before animals spawn
 
-        while (true)
+        while (!hSystem.gameOver)
         {
             SpawnRandomPrefab();
             float randomDelay = Random.Range(0.8f, 2.0f);
