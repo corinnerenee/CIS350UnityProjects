@@ -49,15 +49,11 @@ public class SpawnManagerX : MonoBehaviour
 
         float spawnInterval = Random.Range(3.0f, 5.0f);
 
-        //spawn random colored ball
-        Instantiate(ballPrefabs[prefabIndex], new Vector3(0, 0, 0), ballPrefabs[prefabIndex].transform.rotation);
-
         //random spawn position
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
 
         //spawn ball
         Instantiate(ballPrefabs[prefabIndex], spawnPos, ballPrefabs[prefabIndex].transform.rotation);
-        Invoke("SpawnRandomPrefab", spawnInterval);
 
 
     }
