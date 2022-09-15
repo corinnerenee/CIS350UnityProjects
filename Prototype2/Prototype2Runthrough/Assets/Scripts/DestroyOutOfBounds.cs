@@ -6,6 +6,7 @@ public class DestroyOutOfBounds : MonoBehaviour
 {
     public float topBound = 20;
     public float bottomBound = -10;
+
     // Update is called once per frame
     void Update()
     {
@@ -16,7 +17,8 @@ public class DestroyOutOfBounds : MonoBehaviour
 
         if(transform.position.z < bottomBound)
         {
-            Debug.Log("Game Over!");
+            //grab hystem & call take dmg
+            GameObject.FindGameObjectWithTag("HealthSystem").GetComponent<HealthSystem>().TakeDamage();
             Destroy(gameObject);
         }
     }

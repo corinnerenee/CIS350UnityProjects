@@ -203,9 +203,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1647137220}
-  - {fileID: 1624420885}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -310,8 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94c4896c13f1984c827f05f12fefaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
+  health: 3
+  maxHealth: 5
   hearts:
   - {fileID: 1061311506}
   - {fileID: 1836670710}
@@ -334,7 +333,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &362289011
 PrefabInstance:
@@ -816,7 +815,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &886492687
 GameObject:
@@ -851,6 +850,7 @@ MonoBehaviour:
   - {fileID: 6315546954482003614, guid: a4e4e1c4076dcab4babd5783af4dcee8, type: 3}
   - {fileID: 6315546954482003614, guid: a4e4e1c4076dcab4babd5783af4dcee8, type: 3}
   - {fileID: 6315546954482003614, guid: a4e4e1c4076dcab4babd5783af4dcee8, type: 3}
+  hSystem: {fileID: 0}
   gameOver: 0
 --- !u!4 &886492689
 Transform:
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 1300233845}
   m_Layer: 5
   m_Name: Score
-  m_TagString: Untagged
+  m_TagString: DisplayScoreText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1207,16 +1207,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624420882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 33822556}
+  m_Father: {fileID: 2137278240}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54, y: -81}
+  m_AnchoredPosition: {x: 133.20691, y: -161.37955}
   m_SizeDelta: {x: 472.2066, y: 217.2493}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1647137219
@@ -1464,56 +1464,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836670708}
   m_CullTransparentMesh: 0
---- !u!1 &2097909284
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2097909286}
-  - component: {fileID: 2097909285}
-  m_Layer: 0
-  m_Name: HealthSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2097909285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097909284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d94c4896c13f1984c827f05f12fefaaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  hearts: []
-  fullHeart: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  emptyHeart: {fileID: 0}
-  gameOver: 0
-  gameOverText: {fileID: 0}
---- !u!4 &2097909286
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097909284}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 468.57822, y: 19.11318, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2137278239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1494,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1300233844}
+  - {fileID: 1624420885}
   m_Father: {fileID: 1647137220}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
