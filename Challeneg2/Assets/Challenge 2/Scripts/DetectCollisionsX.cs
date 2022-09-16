@@ -12,7 +12,6 @@ public class DetectCollisionsX : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         displayScript.score++;
-        Destroy(other.gameObject);
         Destroy(gameObject);
     }
 }

@@ -11,15 +11,19 @@ public class HealthSystem : MonoBehaviour
     public bool gameOver = false;
     public Text hSystem;
     public GameObject gameOverText;
+    DisplayText displayScript;
+
     private void Start()
     {
         hSystem.text = "Health: " + maxHealth;
         maxHealth = 10;
-        health = maxHealth; 
-      
+        health = maxHealth;
+        displayScript = GameObject.FindGameObjectWithTag("Score").GetComponent<DisplayText>();
+
     }
     void Update()
     {
+
         hSystem.text = "Health: " + health;
         //If health is somehow more than max health, set health to max health
         if (health > maxHealth)
@@ -31,11 +35,22 @@ public class HealthSystem : MonoBehaviour
         {
             gameOver = true;
             gameOverText.SetActive(true);
-            //Press R to restart if game is over
+            //Press A to restart if game is over
             if (Input.GetKeyDown(KeyCode.A))
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
             }
+        }
+        if (displayScript.score >= 5)
+        {
+            gameOver = true;
+            hSystem.text = "You've Won! Press A to Play Again!";
+            //Press A to restart if game is over
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            }
+
         }
     }
     public void TakeDamage()
