@@ -14,11 +14,16 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
+    public AudioClip jummpSound;
+    public AudioClip crashSound;
 
     private Animator playAnimator;
-    // Start is called before the first frame update
+    private AudioSource playerAudio;
+        // Start is called before the first frame update
     void Start()
     {
+        //get audio source
+        playerAudio = GetComponent<AudioSource>();
         //get rigidbody
         rb = GetComponent<Rigidbody>();
 
