@@ -11,11 +11,19 @@ public class PlayerController : MonoBehaviour
 
     public bool isOnGround = true;
     public bool gameOver = false;
+
+    private Animator playAnimator;
     // Start is called before the first frame update
     void Start()
     {
         //get rigidbody
         rb = GetComponent<Rigidbody>();
+
+        //get animator
+        playAnimator = GetComponent<Animator>();
+
+        //start running animation on start
+        playAnimator.SetFloat("speed_f", 1.0f);
 
         //Modify gravity
         //Physics.gravity *= gravityModifer;
