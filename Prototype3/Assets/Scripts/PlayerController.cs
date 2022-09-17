@@ -18,8 +18,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         //Modify gravity
-        Physics.gravity *= gravityModifer;
-
+        //Physics.gravity *= gravityModifer;
+        if(Physics.gravity.y > -10)
+        {
+            Physics.gravity *= gravityModifer;
+        }
         forceMode = ForceMode.Impulse;
             
     }
