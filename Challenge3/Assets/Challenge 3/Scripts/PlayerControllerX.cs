@@ -8,6 +8,8 @@ public class PlayerControllerX : MonoBehaviour
 
     public float floatForce;
     private float gravityModifier = 1.5f;
+    private float upperBound = 13;
+    private float lowerBound = 1;
     private Rigidbody playerRb;
 
     public ParticleSystem explosionParticle;
@@ -37,15 +39,17 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerRb.transform.position.y > 15 && !gameOver)
+        if(playerRb.transform.position.y > upperBound && !gameOver)
         {
+            //keep balloon within bounds
             lowEnough = false;
             Debug.Log("too high to jump");
+            playerRb.AddForce(Vector3.down * 200);
         }
         else
         {
             lowEnough = true;
-            playerRb.AddForce(Vector3.up * floatForce);
+            //playerRb.AddForce(Vector3.up * floatForce);
         }
     
         
@@ -63,6 +67,14 @@ public class PlayerControllerX : MonoBehaviour
                 lowEnough = true;
                 playerRb.AddForce(Vector3.up * floatForce);
             }
+        }
+        //player moves down just a bit
+        playerRb.AddForce(Vector3.down * 10);
+
+        //if player reaches lowerBound balloon bounces back up
+        if(playerRb.transform.position.y < lowerBound && !gameOver)
+        {
+            playerRb.AddForce(Vector3.up * 100);
         }
     }
 
