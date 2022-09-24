@@ -346,7 +346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &460865716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.3, y: 8.4, z: -18.9}
+  m_LocalPosition: {x: 23.82, y: 8.4, z: -18.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
-  floatForce: 500
+  floatForce: 400
   explosionParticle: {fileID: 1171260740}
   fireworksParticle: {fileID: 66121944}
   moneySound: {fileID: 8300000, guid: af9f934eb4288464eb120a5857921cc3, type: 3}

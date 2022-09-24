@@ -9,7 +9,7 @@ public class PlayerControllerX : MonoBehaviour
     public float floatForce;
     private float gravityModifier = 1.5f;
     private float upperBound = 13;
-    private float lowerBound = 1;
+    private float lowerBound = 1.2f;
     private Rigidbody playerRb;
 
     public ParticleSystem explosionParticle;
@@ -66,6 +66,8 @@ public class PlayerControllerX : MonoBehaviour
         {
                 lowEnough = true;
                 playerRb.AddForce(Vector3.up * floatForce);
+                //player moves down just a bit
+                playerRb.AddForce(Vector3.down * 50);
             }
         }
         //player moves down just a bit
