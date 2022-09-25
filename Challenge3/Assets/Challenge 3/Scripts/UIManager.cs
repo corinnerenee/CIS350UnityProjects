@@ -7,20 +7,53 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public int score;
-    public Text scoreKeeper;
+    public Text scoreText;
 
-    public PlayerControllerX playerScript;
+    public bool won;
+    public bool gameOver;
+
+    private PlayerControllerX playerScript;
     // Start is called before the first frame update
     void Start()
-    {
-        score = FindObjectOfType<Text>();
-        scoreKeeper.text = "Score: 0";
-        
+    {  
+        if (scoreText == null)
+        {
+            scoreText = FindObjectOfType<Text>();
+        }
+        if (playerScript == null)
+        {
+            playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerX>();
+        }
+
+        score = 0;
+        scoreText.text = "Score: " + score;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(!playerScript.gameOver)
+        {
+            scoreText.text = "Score: " + score;
+        }
+        if (score >= 15)
+        {
+            playerScript.gameOver = true;
+            won = true;
+            scoreText.text = "You Win\n Press A to Play Again!";
+        }
+        if(playerScript.gameOver & !won)
+        {
+            scoreText.text = "You Lose!\n Press A to Play Again!";
+        }
+       
+        if (playerScript.gameOver && Input.GetKeyDown(KeyCode.A))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+
     }
+
+
 }
