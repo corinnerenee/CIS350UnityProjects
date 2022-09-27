@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
 
     public bool won;
-    public bool gameOver;
 
     private PlayerControllerX playerScript;
     // Start is called before the first frame update
@@ -25,8 +24,8 @@ public class UIManager : MonoBehaviour
             playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerX>();
         }
 
-        score = 0;
-        scoreText.text = "Score: " + score;
+
+        scoreText.text = "Score: 0";
 
     }
 

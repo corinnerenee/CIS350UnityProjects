@@ -8,7 +8,6 @@ public class PlayerControllerX : MonoBehaviour
 
     public float floatForce;
     private float gravityModifier = 1.5f;
-    public int score;
     private float upperBound = 13;
     private float lowerBound = 1.5f;
     private Rigidbody playerRb;
@@ -22,9 +21,9 @@ public class PlayerControllerX : MonoBehaviour
 
     public bool lowEnough;
     public bool gameOver;
-
+    
     PlayerControllerX playerControl;
-    UIManager ui;
+    UIManager uiScore;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +32,11 @@ public class PlayerControllerX : MonoBehaviour
         playerAudio = GetComponent<AudioSource>();
 
         playerRb = GetComponent<Rigidbody>();
-       ui =  GameObject.FindGameObjectWithTag("Score").GetComponent<UIManager>();
-    
+        if(uiScore == null)
+        {
+            uiScore =  GameObject.FindGameObjectWithTag("Manager").GetComponent<UIManager>();
+        }
+       
 
         if (playerControl == null)
         {
@@ -51,31 +53,29 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerRb.transform.position.y > upperBound && !playerControl.gameOver)
+        if (playerRb.transform.position.y >= upperBound && !playerControl.gameOver)
         {
             lowEnough = false;
             playerRb.AddForce(Vector3.down * 75);
             Debug.Log("too high to jump");
         }
         // While space is pressed and player is low enough, float up
-        if (Input.GetKey(KeyCode.Space) && !playerControl.gameOver)
+        if (Input.GetKey(KeyCode.Space) && !playerControl.gameOver && lowEnough)
         {
-                lowEnough = true;
                 playerRb.AddForce(Vector3.up * floatForce);
                 //player moves down just a bit
-                playerRb.AddForce(Vector3.down * 75);
+                //playerRb.AddForce(Vector3.down * 75);
             
         }
-    
+        if (Input.GetKey(KeyCode.Space) && !playerControl.gameOver && !lowEnough){
+            playerRb.AddForce(Vector3.down * 5);
+        }
+
         //if player reaches lowerBound balloon bounces back up
-        if(playerRb.transform.position.y < lowerBound && !playerControl.gameOver)
+        if (playerRb.transform.position.y <= lowerBound && !playerControl.gameOver)
         {
             playerRb.AddForce(Vector3.up * 100);
         }
-
-        playerRb.AddForce(Vector3.down * 80);
-
-      
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -97,7 +97,7 @@ public class PlayerControllerX : MonoBehaviour
             fireworksParticle.Play();
             playerAudio.PlayOneShot(moneySound, 1.0f);
             //Destroy(other.gameObject);
-            ui.score++; //increment score
+            uiScore.score++; //increment score
 
         }
 
