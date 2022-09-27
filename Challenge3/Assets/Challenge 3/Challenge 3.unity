@@ -498,8 +498,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -236, y: 190}
-  m_SizeDelta: {x: 284.03525, y: 42.840134}
+  m_AnchoredPosition: {x: -189.01, y: 160.7}
+  m_SizeDelta: {x: 378.0176, y: 101.41231}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730456579
 MonoBehaviour:
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf1b15f61b704c8e8e279e263bb77b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   playerControllerScript: {fileID: 0}
 --- !u!65 &835818924
 BoxCollider:
@@ -660,8 +660,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 56.790554, y: 18.779999, z: 0.2}
-  m_Center: {x: -28.004717, y: 0, z: 0}
+  m_Size: {x: 55.67113, y: 18.779999, z: 0.2}
+  m_Center: {x: -28.564428, y: 0, z: 0}
 --- !u!1001 &954209497
 PrefabInstance:
   m_ObjectHideFlags: 0
