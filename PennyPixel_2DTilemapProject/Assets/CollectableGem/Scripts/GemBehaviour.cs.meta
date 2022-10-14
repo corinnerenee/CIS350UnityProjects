@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 17a2dd6832e2f464290469455d78feaf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gemVisuals: {fileID: 1764816090862790, guid: 75cabef8c622f42229b80fec978c6a10,
+      type: 3}
+  - collectedParticleSystem: {fileID: 1501891651858998, guid: c40c4d43bf395475087c143dd8ee36be,
+      type: 3}
+  - gemCollider2D: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
