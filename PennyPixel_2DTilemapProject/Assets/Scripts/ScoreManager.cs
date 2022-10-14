@@ -15,6 +15,8 @@ public class ScoreManager : MonoBehaviour
     public bool gameOver;
     public float timeValue;
 
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,11 @@ public class ScoreManager : MonoBehaviour
     {
         float min = Mathf.FloorToInt(timeValue / 60);
         float sec = Mathf.FloorToInt(timeValue % 60);
-
+        if (player.transform.position.y < -3.75)
+        {
+            gameOver = true;
+            won = false;
+        }
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime; 
@@ -48,8 +54,12 @@ public class ScoreManager : MonoBehaviour
             won = false;
             eofgText.text = "You've ran out of time! Press A to Play Again";
         }
-           
-        
+
+        if (gameOver && Input.GetKeyDown(KeyCode.A))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+
     }
 
     public void AddScore()
