@@ -31,10 +31,11 @@ public class ScoreManager : MonoBehaviour
     {
         float min = Mathf.FloorToInt(timeValue / 60);
         float sec = Mathf.FloorToInt(timeValue % 60);
-        if (player.transform.position.y < -3.75)
+        if (player.transform.position.y <= -3.75)
         {
             gameOver = true;
             won = false;
+            eofgText.text = "You've Lost! Press A to Play Again";
         }
         if (timeValue > 0)
         {
