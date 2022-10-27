@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Fire
   - Target
+  - GeometryDynamic
+  - eogText
+  - Score
+  - ScoreManager
+  - Timer
   layers:
   - Default
   - TransparentFX
