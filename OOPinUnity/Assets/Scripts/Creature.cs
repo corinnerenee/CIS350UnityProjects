@@ -11,7 +11,7 @@ public class Creature : Enemy
         base.Awake();
         health = 120;
         damage = 20;
-        GameManager.instance.score += 3;
+        GameManager.Instance.score += 3;
     }
     protected override void Attack(int amount)
     {

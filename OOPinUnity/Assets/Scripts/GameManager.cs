@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#region This code makes the class a singleton
-public class GameManager : MonoBehaviour
-{
-    public static GameManager instance;
-    public int score;
-    private string currentLevelName; //keep track of level we're on
 
+public class GameManager : Singleton<GameManager>
+{
+    public GameObject pauseMenu;
+    public int score;
+    private string currentLevelName = string.Empty; //keep track of level we're on
+/*#region This code makes the class a singleton
+    public static GameManager instance;
     private void Awake()
     {
         if (instance == null)
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Trying to instantiate a second instance of singleton manager");
         }
     }
-#endregion 
+#endregion*/
+
 //methods to load and unload scences
     public void LoadLevel(string levelName)
     {
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
         AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
          if (ao == null)
         {
-            Debug.LogError("[GameManager]: Unable to load level");
+            Debug.LogError("[GameManager]: Unable to load level" + levelName);
             return;
         }
 
@@ -45,6 +47,38 @@ public class GameManager : MonoBehaviour
         AsyncOperation ao = SceneManager.UnloadSceneAsync(levelName);
         {
             Debug.LogError("[GameManager]: Unable to load level");
+            return;
+        }
+    }
+
+    //methods for pausing and unpausing
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
+        }
+
+    }
+
+    public void UnloadCurrentLevel()
+    {
+        //load level in background instead of freezing/lag effect
+        AsyncOperation ao = SceneManager.UnloadSceneAsync(currentLevelName);
+        {
+            Debug.LogError("[GameManager]: Unable to load level" + currentLevelName);
             return;
         }
     }
