@@ -19,10 +19,9 @@ public class TargetHealth : MonoBehaviour
 
     public void Die()
     {
-
         scoreMan.AddScore();
         Destroy(gameObject);
     }
 
-
+    
 }

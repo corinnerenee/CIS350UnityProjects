@@ -5,13 +5,15 @@ using UnityEngine;
 public class Creature : Enemy
 {
     protected int damage;
+    TargetHealth oppHealth;
+    ScoreManager scoreMan;
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
         health = 120;
         damage = 20;
-        GameManager.Instance.score += 3;
+        //GameManager.Instance.score += 3;
     }
     protected override void Attack(int amount)
     {
@@ -24,8 +26,19 @@ public class Creature : Enemy
         Debug.Log("Creature Attacks!");
     }
 
-    protected override void TakeDamage(int amount)
+    public override void TakeDamage(float amount)
     {
-        Debug.Log("You've taken " + damage + " points of damage");
+        scoreMan = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        scoreMan.AddScore();
+        Destroy(gameObject);
     }
 }
