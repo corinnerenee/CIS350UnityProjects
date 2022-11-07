@@ -17,9 +17,9 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         won = false;
         gameOver = false;
-        max = 12;
         score = 0;
         Score.text = "Score: 0";
     }
