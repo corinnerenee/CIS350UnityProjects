@@ -59,15 +59,10 @@ public class PlayerController : MonoBehaviour
         //focalPoint = GameObject.Find("FocalPoint"); //searches thru all game objects which can be very slow
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         forwardInput = Input.GetAxis("Vertical");
         powerupIndicator.transform.position = transform.position + new Vector3(0, 0.5f, 0);
-    }
-
-    private void FixedUpdate()
-    {
         playerRB.AddForce(focalPoint.transform.forward * speed * Time.deltaTime);
         //playerRB.AddForce(Vector3.forward * speed * forwardInput);     
         //vector3 is a global direction, change to local coordinates based on cam view   

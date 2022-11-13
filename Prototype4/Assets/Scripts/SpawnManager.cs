@@ -69,7 +69,7 @@ public class SpawnManager : MonoBehaviour
         {
             Unpause();
         }
-        if (enemyCount == 0) {
+        if (enemyCount == 0 && !gameOver) {
             waveNumber++;
             SpawnEnemyWave(waveNumber);
             SpawnPowerup(1);

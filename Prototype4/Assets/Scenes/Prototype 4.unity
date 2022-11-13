@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d216d4580df352444adbc2f7127f2ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 20
   hasPowerUp: 0
   powerupIndicator: {fileID: 6630512457654851388, guid: e682e95e03ae70e4982ff7d86d351ace,
     type: 3}
