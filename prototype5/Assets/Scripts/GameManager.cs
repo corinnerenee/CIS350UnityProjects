@@ -22,13 +22,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
+        titleScreen.gameObject.SetActive(false);
         spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
         scoreText.text = "Score: " + score;
-        titleScreen.gameObject.SetActive(false);
+        //titleScreen.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
