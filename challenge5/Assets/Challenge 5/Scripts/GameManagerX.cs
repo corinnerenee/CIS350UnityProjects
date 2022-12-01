@@ -9,6 +9,7 @@ public class GameManagerX : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI timerText;
     public GameObject titleScreen;
     public Button restartButton; 
 
@@ -16,6 +17,7 @@ public class GameManagerX : MonoBehaviour
 
     private int score;
     private float spawnRate = 1.5f;
+    public float timeRemaining;
     public bool isGameActive;
 
     private float spaceBetweenSquares = 2.5f; 
@@ -23,14 +25,32 @@ public class GameManagerX : MonoBehaviour
     private float minValueY = -3.75f; //  y value of the center of the bottom-most square
     
     // Start the game, remove title screen, reset score, and adjust spawnRate based on difficulty button clicked
-    public void StartGame()
+    public void StartGame(int difficulty)
     {
-        spawnRate /= 5;
+        spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
         titleScreen.SetActive(false);
+        timeRemaining = 60.0f;
+        timerText.text = "Time: " + timeRemaining;
+        scoreText.text = "Score: " + score;
+    }
+
+    public void Update()
+    {
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+
+        displayTime(timeRemaining);
+
+        if(timeRemaining == 0)
+        {
+            isGameActive = false;
+        }
     }
 
     // While game is active spawn a random target
@@ -70,14 +90,14 @@ public class GameManagerX : MonoBehaviour
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        scoreText.text = "score";
+        scoreText.text = "Score: " + score;
     }
 
     // Stop game, bring up game over text and restart button
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(true);
         isGameActive = false;
     }
 
@@ -86,5 +106,20 @@ public class GameManagerX : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    //converts time (sec) to mins and sec
+    void displayTime(float timeRemaining)
+    {
+        if (timeRemaining < 0)
+        {
+            timeRemaining = 0;
+        }
+
+        float min = Mathf.FloorToInt(timeRemaining / 60);
+        float sec = Mathf.FloorToInt(timeRemaining % 60);
+
+        timerText.text = string.Format("Time Remaining: \n {0:00}:{1:00}", min, sec);
+    }
+
 
 }
